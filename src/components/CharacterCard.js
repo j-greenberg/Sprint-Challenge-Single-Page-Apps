@@ -1,5 +1,44 @@
 import React from "react";
+import styled from "styled-components";
 
-export default function CharacterCard() {
-  return <span>todo: character</span>;
+const AlienCard = styled.div`
+    border: 0.5px solid black;
+    border-radius: 10;
+    background: white;
+    color: black;
+    width: 45%; 
+    max-height: 100%; 
+    margin: 1%;
+    opacity: 1;
+    padding: 1%;
+    p{
+      font-size: 1.4rem;
+    }
+    img{
+      object-fit: contain;
+      max-width: 100%;
+      max-height: 100%;
+    }
+`;
+
+const CharacterTitle = styled.div`
+    font-size: 3.2rem;
+`;
+
+const CharacterSubTitle = styled.div`
+    font-size: 2.6rem;
+`;
+
+export default function CharacterCard(props) {
+  return (
+      <AlienCard>
+      <img src={props.image}/>
+      <h1>Name: {props.name}</h1>
+      <h2>Status: {props.status}</h2>
+      <p>Species: {props.species}</p>
+      <p>Type: {props.type}</p>
+      <p>Gender: {props.gender}</p>
+      <p>Created: {props.created}</p>
+      </AlienCard>
+    )
 }

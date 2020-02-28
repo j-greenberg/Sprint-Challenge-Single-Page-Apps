@@ -1,12 +1,16 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import CharacterCard from "./CharacterCard";
+import SearchForm from "./SearchForm";
 
-export default function CharacterList() {
+export default function CharacterList(props) {
   // TODO: Add useState to track data from useEffect
-    
+  
+  console.log(props, props.query);
   const [characters, setCharacters] = useState([]);
- 
+  const [query, setQuery] = useState(props.query);
+
+  
   useEffect(() => {
  
     const getCharacters = () => {  
@@ -15,25 +19,22 @@ export default function CharacterList() {
       .then(response => {
         console.log(response.data.results);
         setCharacters(response.data.results);
-      })
+        })
       .catch(error => {
         console.log("Error retrieving API: ", error);
       })
     }
+
     getCharacters();
  
     // TODO: Add API Request here - must run in `useEffect`
     //  Important: verify the 2nd `useEffect` parameter: the dependancies array!
   }, characters);
 
+
   return (
     <section className="character-list">
-      {characters.map( props => (
-        <CharacterCard key={props.id} name={props.name} status={props.status} species={props.species} type={props.type}
-        gender={props.gender} origin={props.origin.name} location={props.location.name} image={props.image} 
-        url={props.url} created={props.created}/>
-        )
-      )}
+      <SearchForm characters={characters}/>
     </section>
   );
 }

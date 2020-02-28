@@ -2,6 +2,24 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import CharacterCard from "./CharacterCard";
 import SearchForm from "./SearchForm";
+import styled from "styled-components";
+
+const AlienList = styled.div`
+    border: 0.5px solid black;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    border-radius: 10;
+    background: white;
+    color: black;
+    max-height: 100%; 
+    margin: 1%;
+    opacity: 1;
+    padding: 1%;
+    p{
+      font-size: 1.4rem;
+    }
+`;
 
 export default function CharacterList() {
   
@@ -37,6 +55,7 @@ export default function CharacterList() {
   return (
     <section className="character-list">
       <SearchForm setQuery={setQuery}/>
+      <AlienList>
       {data.map( props => (
         <CharacterCard 
         key={props.id} 
@@ -45,13 +64,11 @@ export default function CharacterList() {
         species={props.species} 
         type={props.type}
         gender={props.gender} 
-        //origin={props.origin.name} 
-        //location={props.location.name} 
         image={props.image} 
-        url={props.url} 
         created={props.created}/>
         )
       )}
+      </AlienList>
     </section>
   );
 }

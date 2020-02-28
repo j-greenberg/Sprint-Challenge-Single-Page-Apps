@@ -6,10 +6,19 @@ const AlienCard = styled.div`
     border-radius: 10;
     background: white;
     color: black;
-    width: 300px; 
-    max-height: 400px; 
+    width: 45%; 
+    max-height: 100%; 
     margin: 1%;
     opacity: 1;
+    padding: 1%;
+    p{
+      font-size: 1.4rem;
+    }
+    img{
+      object-fit: contain;
+      max-width: 100%;
+      max-height: 100%;
+    }
 `;
 
 const CharacterTitle = styled.div`
@@ -20,20 +29,16 @@ const CharacterSubTitle = styled.div`
     font-size: 2.6rem;
 `;
 
-
 export default function CharacterCard(props) {
   return (
-    <div>
+      <AlienCard>
       <img src={props.image}/>
       <h1>Name: {props.name}</h1>
       <h2>Status: {props.status}</h2>
       <p>Species: {props.species}</p>
-      <p>Type{props.type}</p>
-      <p>Gender{props.gender}</p>]
-      {/* <p>Origin{props.origin.name}</p>
-      <p>Location{props.location.name}</p> */}
-      <p>URL: {props.url}</p>
+      <p>Type: {props.type}</p>
+      <p>Gender: {props.gender}</p>
       <p>Created: {props.created}</p>
-    </div>
+      </AlienCard>
     )
 }

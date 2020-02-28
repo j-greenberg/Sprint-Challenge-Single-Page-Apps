@@ -8,12 +8,12 @@ import CharacterList from "./components/CharacterList";
 import SearchForm from "./components/SearchForm";
 
 export default function App() {
- 
+
   return (
     <main>
       <Header/>
       <Switch>
-        <Route path="/characters" component={SearchForm}/>
+        <Route path="/characters" component={CharacterList}/>
         <Route path="/" component={WelcomePage}/>
       </Switch>
       
